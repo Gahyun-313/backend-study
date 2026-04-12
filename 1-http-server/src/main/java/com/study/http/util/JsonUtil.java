@@ -48,7 +48,7 @@ public class JsonUtil {
      * 성공 응답 JSON 문자열 생성
      * {"success":true,"data":<data>}
      */
-    public static String sucessResponse(String data) {
+    public static String successResponse(String data) {
         return String.format("{\"success\":true,\"data\":%s}", data);
     }
 

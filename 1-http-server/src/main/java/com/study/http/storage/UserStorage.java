@@ -56,13 +56,20 @@ public class UserStorage {
     }
 
     /**
+     *
+     */
+    public Optional<User> findById(Long id) {
+        return Optional.ofNullable(store.get(id));
+    }
+
+    /**
      * ID로 사용자를 찾아 이름 수정
      *
      * @param id 수정할 사용자 ID
      * @param name 변경할 이름
      * @return 수정된 User 객체
      */
-    public Optional<User> UpdateById(Long id, String name) {
+    public Optional<User> updateById(Long id, String name) {
         User user = store.get(id);
         if (user == null) return Optional.empty(); // 존재하지 않는 ID면 빈 Optional 반환
         user.setName(name);
@@ -73,7 +80,7 @@ public class UserStorage {
      * ID로 사용자를 찾아 삭제
      *
      * @param id 삭제할 사용자 ID
-     * @return 삭제 성공이면 true, 존재하지 않느 ID면 false
+     * @return 삭제 성공이면 true, 존재하지 않는 ID면 false
      */
     public boolean deleteById(Long id) {
         return store.remove(id) != null; // remove()는 삭제된 값을 반환, null이면 존재하지 않았던 것임
