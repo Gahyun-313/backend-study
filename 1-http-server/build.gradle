@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.study'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 프레임워크 없이 HTTP 직접 구현이 목표이므로 의존성 비워둠
+}
+
+test {
+    useJUnitPlatform()
+}
