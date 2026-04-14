@@ -9,15 +9,28 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * 클라이언트 소켓 1개를 처리하는 핸들러
- * Runnable 구현 -> 스레드풀에서 실행
+ * Runnable 구현 -> 스레드풀(ThreadPoolExecutor)에서 실행
  *
  * 처리 흐름:
  *  소켓 -> InputStrem -> 파싱 -> Router 위임 -> 응답 전송
+ *  1. 소켓에서 InputStream 열기
+ *  2. HTTP 요청 파싱 (Request Line, Headers, Body)
+ *  3. Router에 위임하여 응답 생성
+ *  4. OutputStream으로 응답 전송
+ *  5. 소켓 닫기
+ *  
+ *  멀티스레드 환경:
+ *  - 각 클라이언트 연결마다 새로운 RequestHandler 인스턴스 생성
+ *  - 여러 요청이 동시에 처리됨 (스레드풀 크기만큼 병렬 처리)
  */
 public class RequestHandler implements Runnable {
 
-    private final Socket socket;
+    private final Socket socket;    // 클라이언트와 연결된 소켓 (생성자에서 주입)
 
+    /**
+     * 생성자 - 처리할 소켓을 받아서 저장
+     * @param socket 클라이언트와 연결된 소켓 객체
+     */
     public RequestHandler(Socket socket) {
         this.socket = socket;
     }
