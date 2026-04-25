@@ -87,7 +87,9 @@ User: id / name / createdAt
 ## 📄책임 구조도
 
 ### 1️⃣ 1-http-server 
-<img width="4484" height="2724" alt="image" src="https://github.com/user-attachments/assets/5836160c-7a30-423b-a88a-afea25662c51" />
+<img width="4444" height="2684" alt="image" src="https://github.com/user-attachments/assets/c7d4ac17-d58f-4f40-8420-6ce0e611fe52" />
+
+
 
 ### 2️⃣ 2-mvc-server
 
