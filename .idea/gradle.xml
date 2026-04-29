@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/1-http-server" />
+            <option value="$PROJECT_DIR$/2-mvc-server" />
           </set>
         </option>
       </GradleProjectSettings>
