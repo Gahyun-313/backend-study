@@ -14,22 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-/**
- * 학습 포인트:
- * [1] @SpringBootTest
- *     실제 Spring 컨텍스트를 띄워서 테스트
- *     → 2단계: new UserService(repository) 직접 생성
- *     → 3단계: Spring이 모든 Bean을 자동으로 주입
- *
- * [2] MockMvc
- *     실제 HTTP 요청/응답을 시뮬레이션
- *     → 2단계: curl로 수동 테스트
- *     → 3단계: 코드로 자동화된 HTTP 테스트
- *
- * [3] @DirtiesContext
- *     각 테스트마다 DB를 초기화
- *     → 테스트 간 데이터 독립성 보장
- */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -44,7 +28,7 @@ class UserControllerTest {
     @Test
     @DisplayName("유저 생성 시 201 상태코드와 생성된 유저가 반환되어야 한다")
     void createUser() throws Exception {
-        UserRequest request = new UserRequest();
+        UserRequest request = new UserRequest("홍길동");
 
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -58,7 +42,6 @@ class UserControllerTest {
     @Test
     @DisplayName("전체 유저 조회 시 200 상태코드와 유저 목록이 반환되어야 한다")
     void getUsers() throws Exception {
-        // 유저 2명 생성
         createTestUser("홍길동");
         createTestUser("김영희");
 
@@ -90,7 +73,7 @@ class UserControllerTest {
     void updateUser() throws Exception {
         createTestUser("홍길동");
 
-        UserRequest request = new UserRequest();
+        UserRequest request = new UserRequest("김철수");
 
         mockMvc.perform(put("/users/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -127,7 +110,7 @@ class UserControllerTest {
 
     /** 테스트용 유저 생성 헬퍼 */
     private void createTestUser(String name) throws Exception {
-        UserRequest request = new UserRequest();
+        UserRequest request = new UserRequest(name);
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
