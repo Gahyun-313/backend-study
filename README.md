@@ -14,6 +14,74 @@ Spring을 단순히 사용하는 것을 넘어,
 - 3️⃣ Spring 구조와 비교를 통한 프레임워크 내부 동작 이해
 ---
 
+## ⚙️ 개발 환경
+
+| 항목 | 버전 |
+|------|------|
+| Java | 17 |
+| Gradle | 8.5 |
+| Spring Boot | 3.5.14 |
+| IDE | IntelliJ IDEA |
+
+---
+
+## 🛠️ 실행 방법
+
+### 공통 사전 준비
+
+```bash
+git clone https://github.com/Gahyun-313/web-framework-from-scratch.git
+cd web-framework-from-scratch
+```
+
+### 1단계 — HTTP 서버 실행
+
+```bash
+# IntelliJ에서 실행
+1-http-server/src/main/java/com/study/http/Main.java → Run
+
+# 서버 확인
+curl http://localhost:8080/users
+```
+
+### 2단계 — MVC 서버 실행
+
+```bash
+# IntelliJ에서 실행
+2-mvc-server/src/main/java/com/study/mvc/Main.java → Run
+
+# 서버 확인
+curl http://localhost:8080/users
+```
+
+### 3단계 — Spring Boot 실행
+
+```bash
+# IntelliJ에서 실행
+3-spring-api/src/main/java/com/study/spring/SpringApiApplication.java → Run
+
+# Swagger UI
+http://localhost:8080/swagger-ui/index.html
+
+# H2 콘솔
+http://localhost:8080/h2-console
+# JDBC URL: jdbc:h2:mem:testdb / username: sa / password: (비워두기)
+```
+
+---
+
+## ✅ 테스트 실행
+
+```bash
+# 2단계 JUnit 단위 테스트
+./gradlew :2-mvc-server:test
+
+# 3단계 MockMvc 통합 테스트
+./gradlew :3-spring-api:test
+```
+
+---
+
 ## 구성
 
 | 단계 | 프로젝트 | 설명 | 💡 |
