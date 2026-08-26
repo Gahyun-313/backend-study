@@ -152,16 +152,30 @@ User: id / name / createdAt
 
 <br>
 
-## 📄책임 구조도
+## 📄 책임 구조도
 
-### 1️⃣ 1-http-server 
-<img width="4444" height="2684" alt="image" src="https://github.com/user-attachments/assets/c7d4ac17-d58f-4f40-8420-6ce0e611fe52" />
+### 1️⃣ 1-http-server
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c7d4ac17-d58f-4f40-8420-6ce0e611fe52" width="900" alt="1-http-server 책임 구조도">
+</p>
 
+<br>
 
 ### 2️⃣ 2-mvc-server
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dab4b180-254d-461d-b56c-78baae4eb3cd" width="900" alt="2-mvc-server 책임 구조도">
+</p>
+
+<br>
+
 ### 3️⃣ 3-spring-api
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c5edf631-1b06-4b14-9f07-835261d639a2" width="900" alt="3-spring-api 책임 구조도">
+</p>
+
 
 <br>
 
